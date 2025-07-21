@@ -65,7 +65,20 @@ public class ItemTest {
                 .log().all()
                 .statusCode(200)
                 .body("Content", equalTo(body.get("Content")));
+
         //PUT
+        body.put("Content", "Item_Update");
+        given()
+                .header("Token", token)
+                .body(body.toString())
+                .log().all()
+
+                .when()
+                .put("https://todo.ly/api/items/"+ idItem +".json")
+                .then()
+                .log().all()
+                .statusCode(200)
+                .body("Content", equalTo(body.get("Content")));
 
         //DELETE
         response = given()
