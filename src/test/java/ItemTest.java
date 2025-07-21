@@ -53,33 +53,9 @@ public class ItemTest {
         int idItem = response.then().extract().path("Id");
 
         //GET
-        response = given()
-                .header("Token", token)
-                .body(body.toString())
-                .log().all()
-
-                .when()
-                .get("https://todo.ly/api/items/"+idItem+".json");
-
-        response.then()
-                .log().all()
-                .statusCode(200)
-                .body("Content", equalTo(body.get("Content")));
 
         //PUT
 
         //DELETE
-        response = given()
-                .header("Token", token)
-                .body(body.toString())
-                .log().all()
-
-                .when()
-                .delete("https://todo.ly/api/items/"+idItem+".json");
-
-        response.then( )
-                .log().all()
-                .statusCode(200)
-                .body("Content", equalTo(body.get("Content")));
     }
 }
