@@ -77,7 +77,7 @@ public class ItemTest {
                 .when()
                 .delete("https://todo.ly/api/items/"+idItem+".json");
 
-        response.then()
+        response.then( )
                 .log().all()
                 .statusCode(200)
                 .body("Content", equalTo(body.get("Content")));
